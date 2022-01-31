@@ -23,7 +23,7 @@ class Tradebot(object):
         self.emas_buscadas = False
 
         userId = 13020125
-        password = 'colocoloCampeon123!"#'
+        password = ''
         self.client = xAPIConnector.APIClient()
         loginResponse = self.client.execute(xAPIConnector.loginCommand(userId=userId, password=password))
         xAPIConnector.logger.info(str(loginResponse)) 

@@ -6,7 +6,8 @@ import ssl
 import json
 import indicadores
 import mailError
-import jugada
+from jugada import Jugada
+
 from datetime import datetime
 
 
@@ -30,22 +31,22 @@ class Tradebot(object):
         if(loginResponse['status'] == False):
             print('Login failed. Error code: {0}'.format(loginResponse['errorCode']))
         """
-        self.jugada_bitcoincash = jugada.Jugada(self.client, "BITCOINCASH", 30)
-        self.jugada_bitcoin = jugada.Jugada(self.client, "BITCOIN", 33)
-        self.jugada_etherium = jugada.Jugada(self.client, "ETHEREUM", 33)"""
+        self.jugada_bitcoincash = Jugada(self.client, "BITCOINCASH", 30)
+        self.jugada_bitcoin = Jugada(self.client, "BITCOIN", 33)
+        self.jugada_etherium = Jugada(self.client, "ETHEREUM", 33)"""
 
         
-        self.jugada_euro = jugada.Jugada(self.client, "EURUSD", 3300)
-        self.jugada_usdjpy = jugada.Jugada(self.client, "USDJPY", 3000)
-        self.jugada_cangurousd = jugada.Jugada(self.client, "AUDUSD", 3000)
-        self.jugada_eurgbp = jugada.Jugada(self.client, "EURGBP", 3000)
-        self.jugada_us500 = jugada.Jugada(self.client, "US500", 3000)
-        self.jugada_gold = jugada.Jugada(self.client, "GOLD", 3000)
-        self.jugada_eurchf = jugada.Jugada(self.client, "EURCHF", 4000)
-        self.jugada_gbpusd = jugada.Jugada(self.client, "GBPUSD", 4000)
-        self.jugada_usdchf = jugada.Jugada(self.client, "USDCHF", 4000)
-        self.jugada_eurjpy = jugada.Jugada(self.client, "EURJPY", 4000)
-        self.jugada_us30 = jugada.Jugada(self.client, "US30", 4000)
+        self.jugada_euro = Jugada(self.client, "EURUSD", 3300)
+        self.jugada_usdjpy = Jugada(self.client, "USDJPY", 3000)
+        self.jugada_cangurousd = Jugada(self.client, "AUDUSD", 3000)
+        self.jugada_eurgbp = Jugada(self.client, "EURGBP", 3000)
+        self.jugada_us500 = Jugada(self.client, "US500", 3000)
+        self.jugada_gold = Jugada(self.client, "GOLD", 3000)
+        self.jugada_eurchf = Jugada(self.client, "EURCHF", 4000)
+        self.jugada_gbpusd = Jugada(self.client, "GBPUSD", 4000)
+        self.jugada_usdchf = Jugada(self.client, "USDCHF", 4000)
+        self.jugada_eurjpy = Jugada(self.client, "EURJPY", 4000)
+        self.jugada_us30 = Jugada(self.client, "US30", 4000)
 
             
         #data = client.commandExecute('getProfitCalculation',  dict(closePrice = 1.20615, cmd=0, openPrice = 1.19942, symbol='EURUSD', volume=0.1))

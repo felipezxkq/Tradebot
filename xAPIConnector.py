@@ -3,6 +3,7 @@ import socket
 import logging
 import time
 import ssl
+import datetime
 import pandas as pd
 from threading import Thread
 
@@ -210,6 +211,7 @@ class JsonSocket(object):
 class APIClient(JsonSocket):
     def __init__(self, address=DEFAULT_XAPI_ADDRESS, port=DEFAULT_XAPI_PORT, encrypt=True):
         super(APIClient, self).__init__(address, port, encrypt)
+        self.last_transaction_time = datetime.datetime.now()
         if(not self.connect()):
             raise Exception("Cannot connect to " + address + ":" + str(port) + " after " + str(API_MAX_CONN_TRIES) + " retries")
 
@@ -225,10 +227,21 @@ class APIClient(JsonSocket):
         self.close()
         
     def commandExecute(self,commandName, arguments=None):
+        self.checkTimeIntervalRule()
+
         return self.execute(baseCommand(commandName, arguments))
 
     def commandExecuteAndRespond(self,commandName, arguments=None):
+        self.checkTimeIntervalRule()
         return self.executeAndRespond(baseCommand(commandName, arguments))
+
+    def checkTimeIntervalRule(self):  # XTB's API needs 200ms in between commands, this functions makes sure of that
+        now = datetime.datetime.now()
+        time_difference = now - self.last_transaction_time
+        if(time_difference < datetime.timedelta(seconds = 0.2)):
+            time.sleep(0.2-time_difference.total_seconds() + 0.001)
+            
+        self.last_transaction_time = datetime.datetime.now()
 
 class APIStreamClient(JsonSocket):
     def __init__(self, address=DEFAULT_XAPI_ADDRESS, port=DEFUALT_XAPI_STREAMING_PORT, encrypt=True, ssId=None, 

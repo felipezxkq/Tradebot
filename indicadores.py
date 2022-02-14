@@ -121,7 +121,7 @@ def tipo_de_mercado(ultimo_200, ultimo_precio):
     else:
         return False
 
-def cerrar_transacciones(symbol, client):
+def cerrar_transacciones(symbol, client):  # accion
     trades = client.commandExecute('getTrades',  dict(openedOnly=True))['returnData']
     precio_compra, precio_venta= precios_symbol(symbol, client)
     for trade in trades:
@@ -130,7 +130,7 @@ def cerrar_transacciones(symbol, client):
             order = trade['order']
             client.commandExecute('tradeTransaction',  dict(tradeTransInfo = dict(cmd= trade['cmd'], customComment="a", expiration=0, order=order, price=precio_compra, sl=0, tp=0, symbol=symbol, type=2, volume=volumen)))
             
-def mover_stop_loss(symbol, client, precio_anterior, sl_actual):
+def mover_stop_loss(symbol, client, precio_anterior, sl_actual):  # accion
     trades = client.commandExecute('getTrades',  dict(openedOnly=True))['returnData']
     precio_compra, precio_venta= precios_symbol(symbol, client)
     for trade in trades:

@@ -37,6 +37,8 @@ class Tradebot(object):
 
         
         self.jugada_euro = Jugada(self.client, "EURUSD", 3300)
+
+        """
         self.jugada_usdjpy = Jugada(self.client, "USDJPY", 3000)
         self.jugada_cangurousd = Jugada(self.client, "AUDUSD", 3000)
         self.jugada_eurgbp = Jugada(self.client, "EURGBP", 3000)
@@ -46,7 +48,7 @@ class Tradebot(object):
         self.jugada_gbpusd = Jugada(self.client, "GBPUSD", 4000)
         self.jugada_usdchf = Jugada(self.client, "USDCHF", 4000)
         self.jugada_eurjpy = Jugada(self.client, "EURJPY", 4000)
-        self.jugada_us30 = Jugada(self.client, "US30", 4000)
+        self.jugada_us30 = Jugada(self.client, "US30", 4000)"""
 
             
         #data = client.commandExecute('getProfitCalculation',  dict(closePrice = 1.20615, cmd=0, openPrice = 1.19942, symbol='EURUSD', volume=0.1))
@@ -59,6 +61,8 @@ class Tradebot(object):
                 balance, patrimonio, nivel_margen = indicadores.obtener_balance_patrimonio_y_nivel_margen(self.client)
                 mailError.sendmail("felipe.zxkq@gmail.com", "Bot sin diff ema", "Balance: "+str(balance)+"\nPatrimonio: "+str(patrimonio)+"\nNivel de margen: "+str(nivel_margen))
                 self.jugada_euro.obtener_velas_y_emas()
+
+                """
                 self.jugada_usdjpy.obtener_velas_y_emas()
                 self.jugada_cangurousd.obtener_velas_y_emas()
                 
@@ -71,7 +75,7 @@ class Tradebot(object):
                 self.jugada_eurjpy.obtener_velas_y_emas()
                 self.jugada_us30.obtener_velas_y_emas()
 
-                """
+               
                 self.jugada_etherium.obtener_velas_y_emas()
                 self.jugada_bitcoin.obtener_velas_y_emas()
                 self.jugada_bitcoincash.obtener_velas_y_emas()"""
@@ -79,6 +83,8 @@ class Tradebot(object):
 
             else:
                 self.jugada_euro.jugar()
+
+                """
                 self.jugada_usdjpy.jugar()
                 self.jugada_cangurousd.jugar()
                 
@@ -92,7 +98,7 @@ class Tradebot(object):
                 self.jugada_us30.jugar()
 
                 self.emas_buscadas = False
-                """
+               
                 self.jugada_etherium.jugar()
                 self.jugada_bitcoin.jugar()
                 self.jugada_bitcoincash.jugar()"""
@@ -104,5 +110,5 @@ class Tradebot(object):
         pass
 
 bot = Tradebot()
-print("caca")
-time.sleep(144000)
+print("termino")
+time.sleep(1440000)

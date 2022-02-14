@@ -150,7 +150,7 @@ def cuanto_comprar(margen_libre, costo_margen):
 #movimiento_emas(False, dict(ema_5=1.0, ema_20=2.0), dict(ema_20=1.0, ema_5=1.2))
 
 # min: 1684, max: 2070, med = 1877, variacion: 20.5%  // min: 693, max: 841, med: 767, variacion: 19%
-print("Maxima apuesta: ", maxima_apuesta_posible(22420, 4030, 15, 808, 100000))
+#print("Maxima apuesta: ", maxima_apuesta_posible(22420, 4030, 15, 808, 100000))
 
 #print("Maxima apuesta: ", maxima_apuesta_posible(11800, 3499, 10.6, 700.4, 100000))
 
@@ -162,3 +162,5 @@ print("Maxima apuesta: ", maxima_apuesta_posible(22420, 4030, 15, 808, 100000))
 
 # usdclp
 #print("Profit: ", calcular_profit_compra(0.01, 100000, 700.38, 699.44))
+
+print("Maxima apuesta: ", maxima_apuesta_posible(60000, 4583, 1.1254, 1.132, 100000))

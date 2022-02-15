@@ -5,8 +5,9 @@ import indicadores, mailError
 import time
 
 
-class Jugada(object):
-    
+
+class Jugada(object): #jugar con una stonk (stonks!!!)
+    #Tipo EuroUsd
     def __init__(self, client, symbol, volumen_minimo):
         self.symbol = symbol
         self.client = client
@@ -26,7 +27,7 @@ class Jugada(object):
         print("Ultimo precio: ", ultimo_precio)
         emas_dict = dict(ema_5= ultimo_5, ema_20= ultimo_20)
         self.emas_anteriores = dict(sorted(emas_dict.items(), key=lambda item: item[1]))
-        print("Emas anteriores: ", self.emas_anteriores)
+        print("Emas anteriores: ", self.emas_anteriores) #Emas =exponencial moving average
         self.margen_symbol = strategy.obtener_margen_symbol(symbol, self.client)
 
         self.mercado_actual = strategy.tipo_de_mercado(ultimo_200, ultimo_precio)
